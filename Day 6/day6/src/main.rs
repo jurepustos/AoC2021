@@ -31,8 +31,6 @@ fn growth(input: &[usize], rounds: usize) -> u64 {
         }
         counter[6] += zeros;
         counter[8] = zeros;
-
-        // println!("{}", counter.iter().sum::<u64>());
     }
 
     counter.iter().sum::<u64>()

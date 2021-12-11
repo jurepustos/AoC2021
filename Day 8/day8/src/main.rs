@@ -235,8 +235,6 @@ fn get_map(entry: &Entry) -> Vec<usize> {
     map[map_a] = Some(char_to_int('a'));
     map[map_c] = Some(char_to_int('c'));
 
-    println!("map: {:?}", map);
-
     map.iter().flatten().map(|m| *m).collect()
 }
 
@@ -264,8 +262,6 @@ fn display_to_digit(map: &[usize], display: &[usize]) -> usize {
         vec![0, 1, 2, 3, 5, 6]
     ];
 
-    println!("display: {:?}", display);
-
     let mut mapped_display: Vec<usize> = display.iter()
         .map(|&c| map[c])
         .collect();
@@ -273,9 +269,7 @@ fn display_to_digit(map: &[usize], display: &[usize]) -> usize {
     mapped_display.sort();
 
     let mut converted_digit: Option<usize> = None;
-    println!("mapped display: {:?}", mapped_display);
     for (digit,digit_conv) in conversion.iter().enumerate() {
-        println!("digit convert: {:?}", digit_conv);
         if mapped_display == digit_conv.clone() {
             converted_digit = Some(digit);
             break;
@@ -292,13 +286,10 @@ fn part2(entries: &[Entry]) -> usize {
 
         let mut number = 0;
         for output in &entry.outputs {
-            println!("output: {:?}", output);
             let digit = display_to_digit(&map, output);
-            println!("digit: {}", number);
             number = number * 10 + digit;
         }
 
-        println!("number: {}", number);
         sum += number; 
     }
 
